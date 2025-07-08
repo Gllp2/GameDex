@@ -8,10 +8,11 @@ async function insertUser(user) {
     return result.insertedId
 }
 
-async function  findUser() {
+async function findUser(userName) {
     const col = await GetCollection(collName)
-    const result = await col.findOne({"$username" : user})
+    const result = await col.findOne({userName : userName})
     return result
 }
+
 
 module.exports = {insertUser, findUser}

@@ -1,5 +1,6 @@
 const express = require("express")
 const { createUser, GetUser } = require("./services/users")
+const { createToken } = require("./services/tokens")
 const app = express()
 const port = 3031
 const tokens= []
@@ -32,6 +33,19 @@ app.post("/api/signup", async (req, res) => {
     }
 })
 
+app.get("/api/auth/login", async (req, res) => {
+    const {username, password} = req.body;
+
+    const res = await GetUser(username)
+
+    const token = await createToken(res)
+
+    if(token === null){
+        return res.status(403).json({message: "ERRO"})
+    }
+    return res.status(200).json({token: token})
+
+}) 
 
 app.listen(port, () => {
     console.log(`Listening on https://localhost:${port}`)

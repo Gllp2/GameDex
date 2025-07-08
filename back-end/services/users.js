@@ -4,8 +4,10 @@ async function createUser(data) {
     return await insertUser(data)
 }
 
-async function GetUser() {
-    return await findUser()
+async function GetUser(userName) {
+    return await findUser(userName)
 }
+
+
 
 module.exports = {createUser, GetUser}
