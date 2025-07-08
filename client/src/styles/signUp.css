@@ -1,0 +1,74 @@
+body{
+    background-color: #442480;
+    color: #D9D9D9;
+}
+
+/* Mobile styles (default) */
+.dex-logo{
+    height: 40%;
+    width: 40%;
+    display: block;
+    margin: auto;
+}
+.logIn-link{
+    color:gray;
+    font-size: 16px;
+    text-decoration: none;
+}
+.signUp-Form{
+    text-align: center;
+}
+.label-title{
+    margin-right:90px
+}
+.input-label{
+    border-radius: 30px;
+}
+.label-title-confirmPass{
+    margin-right:35px
+}
+.label-title-email{
+    margin-right: 122px;
+}
+.signIn{
+    margin-left:30px;
+    font-size: 13px;
+}
+.signUp-button{
+    padding-left:50px;
+    padding-right:50px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-decoration: none;
+}
+.signUp-button:hover{
+    color: rgb(251, 8, 8);
+}
+
+/* Desktop styles */
+@media (min-width: 441px) {
+    .signUp-Form {
+        width: 400px;
+        margin: 60px auto;
+        background: rgba(34, 20, 60, 0.85);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        padding: 40px 32px;
+    }
+    .dex-logo {
+        width: 30%;
+        height: 30%;
+    }
+    .input-label {
+        width: 90%;
+        font-size: 18px;
+        padding: 10px 16px;
+    }
+    .signUp-button {
+        font-size: 18px;
+        padding: 12px 60px;
+    }
+    .logIn-link {
+        font-size: 18px;
+    }
+}

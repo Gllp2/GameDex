@@ -1,0 +1,59 @@
+.floating-logos-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-logo {
+  position: absolute;
+  opacity: 0.05;
+  pointer-events: none;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-10px, -15px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/* Optional: Positioning specific logos randomly */
+.floating-logo.epic {
+  top: 10%;
+  left: 5%;
+}
+.floating-logo.steam {
+  top: 70%;
+  left: 20%;
+}
+.floating-logo.ea {
+  top: 30%;
+  right: 10%;
+}
+.floating-logo.ps {
+  bottom: 15%;
+  left: 60%;
+}
+.floating-logo.xbox {
+  top: 50%;
+  left: 40%;
+}
+
+/* Desktop styles (if you want to tweak for desktop, add here) */
+@media (min-width: 441px) {
+  .floating-logo {
+    opacity: 0.09;
+  }
+}
