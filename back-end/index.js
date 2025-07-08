@@ -20,13 +20,14 @@ app.post("/api/signup", async (req, res) => {
         return res.status(400).json(error)
     } else {
         const create = {
+            email: body.email,
             username: body.username,
             password: body.password,
             games: []
         }
         const id = await createUser(create)
         const message = {
-            message: "Utilizador Criado com Sucesso!",
+            message: "Utilizador criado com Sucesso!",
             id : id
         }
         return res.status(201).json(message)
@@ -46,6 +47,11 @@ app.get("/api/auth/login", async (req, res) => {
     return res.status(200).json({token: token})
 
 }) 
+app.get("/api/games", async (req, res) => {
+    const games = await getGames()
+    return res.status(200).json(games)
+})
+
 
 app.listen(port, () => {
     console.log(`Listening on https://localhost:${port}`)
