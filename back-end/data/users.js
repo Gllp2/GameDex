@@ -1,6 +1,6 @@
 const { GetCollection } =  require("./mongodb")
 
-const collName = "users"
+const collName = "Users"
 
 async function insertUser(user) {
     const col = await GetCollection(collName)
