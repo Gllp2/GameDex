@@ -1,6 +1,8 @@
 const express = require("express")
 const { createUser, GetUser } = require("./services/users")
 const { createToken } = require("./services/tokens")
+const { getGames, getGame } = require("./services/games")
+const { ObjectId } = require("mongodb")
 const app = express()
 const port = 3031
 const tokens= []
@@ -50,6 +52,12 @@ app.get("/api/auth/login", async (req, res) => {
 app.get("/api/games", async (req, res) => {
     const games = await getGames()
     return res.status(200).json(games)
+})
+
+app.get("api/games/:id", async (req, res) => {
+    const gameId = ObjectId(req.params.id)
+    const game = await getGame(gameId)
+    return res.status(200).json(game)
 })
 
 

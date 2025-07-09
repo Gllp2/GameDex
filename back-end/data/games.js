@@ -8,4 +8,10 @@ async function  findGames() {
     return result
 }
 
-module.exports = {findGames}
+async function findGame(id) {
+    const col = await GetCollection(collName)
+    const result = await col.findOne({_id: id})
+    return result
+}
+
+module.exports = {findGames, findGame}
