@@ -39,9 +39,9 @@ app.post("/api/signup", async (req, res) => {
 app.get("/api/auth/login", async (req, res) => {
     const {username, password} = req.body;
 
-    const res = await GetUser(username)
+    const user = await GetUser(username)
 
-    const token = await createToken(res)
+    const token = await createToken(user)
 
     if(token === null){
         return res.status(403).json({message: "ERRO"})
@@ -54,8 +54,9 @@ app.get("/api/games", async (req, res) => {
     return res.status(200).json(games)
 })
 
-app.get("api/games/:id", async (req, res) => {
-    const gameId = ObjectId(req.params.id)
+app.get("/api/games/:id", async (req, res) => {
+    const gameId = req.params.id
+    console.log(gameId)
     const game = await getGame(gameId)
     return res.status(200).json(game)
 })
