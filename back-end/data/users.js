@@ -14,5 +14,14 @@ async function findUser(userName) {
     return result
 }
 
+async function updateUser(userName, update) {
+    const col = await GetCollection(collName)
+    const result = await col.updateOne(
+        { userName: userName},
+        { $set: {games: update}}
+    )
+    return result.modifiedCount > 0
+}
 
-module.exports = {insertUser, findUser}
+
+module.exports = {insertUser, findUser, updateUser};

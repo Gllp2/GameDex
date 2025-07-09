@@ -1,4 +1,4 @@
-const { insertToken } = require("../data/tokens");
+const { insertToken, findToken } = require("../data/tokens");
 
 async function createToken(user){
     if(user && user !== null){
@@ -9,7 +9,7 @@ async function createToken(user){
 
 async function verifyToken(id) {
     const res = await findToken(id)
-    if(res === undefined) {
+    if(res === undefined || res == null) {
         return false
     }
     return true
