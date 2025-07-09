@@ -11,12 +11,12 @@ export default function CollectionHistory() {
           <div className="price-comparison">
             <div>
               <p>You<br />bought it<br />for</p>
-              <span className="price">$11.99</span>
+              <span className="price">11.99$</span>
             </div>
             <div className="divider" />
             <div>
               <p>Today its<br />valued<br />for</p>
-              <span className="price">$13.20</span>
+              <span className="price">13.20$</span>
             </div>
           </div>
         </div>
