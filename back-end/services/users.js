@@ -1,4 +1,5 @@
-const { insertUser, findUser, updateUser: updateUserData } = require("../data/users");
+const { findToken } = require("../data/tokens");
+const { insertUser, findUser, updateUser: updateUserData, findUserById } = require("../data/users");
 
 async function createUser(data) {
     return await insertUser(data)
@@ -8,9 +9,14 @@ async function GetUser(userName) {
     return await findUser(userName)
 }
 
-async function updateUser(userName, update, user) {
+async function updateUser(update, tokenId) {
+    const token =  await findToken(tokenId)
+    const user = await findUserById(token.uid)
     const newUpdate = [...user.games, update]
-    return await updateUserData(userName, newUpdate)
+    if (!user.games.includes(update.gameId)) {
+        return "User already has this game"
+    }
+    return await updateUserData(user.username, newUpdate)
 }
 
 

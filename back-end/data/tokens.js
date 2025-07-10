@@ -15,7 +15,7 @@ async function insertToken(userId) {
 
 async function findToken(token) {
     const new_token = new ObjectId(String(token))
-
+    
     const col = await GetCollection(COLLECTION)
 
     const res = await col.findOne({_id: new_token})

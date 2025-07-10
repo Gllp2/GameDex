@@ -16,7 +16,6 @@ app.post("/api/signup", async (req, res) => {
     };
     if (body.password != body.passwordConfirmation) {
         error.errors.password = "As passwords não coincidem.";
-        console.log(error);
     }
     if (Object.hasOwn(error.errors, "password")) {
         return res.status(400).json(error);
@@ -82,14 +81,13 @@ app.get("/api/games/:id", async (req, res) => {
     }
 
     const gameId = req.params.id
-    console.log(gameId)
     const game = await getGame(gameId)
     return res.status(200).json(game)
 })
 
 
 
-app.patch("/api/users/", async (req, res) => {
+app.patch("/api/users/", async (req, res) => { //add game
     const body = req.body
     const token = req.headers.authorization
     
@@ -106,19 +104,15 @@ app.patch("/api/users/", async (req, res) => {
             timestamp: new Date()
         }
 
-        const user = await GetUser(body.username);
-        if (!user) {
-            return res.status(404).json({ message: "Utilizador não encontrado." });
-        }
+        const result = await updateUser(games, token);
 
-        if (!user.games.includes(body.gameId)) {
-            await updateUser(body.username, games, user );
+        if (typeof(result) == "string") {
+            return res.status(400).json({ message: result })
         }
 
         return res.status(200).json({
                 message: "Jogo adicionado ao utilizador.",
-                games: user.games,
-            });
+        });
     } catch (err) {
         return res.status(500).json({ message: "Erro ao atualizar utilizador." });
     }

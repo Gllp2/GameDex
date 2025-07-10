@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb")
 const { GetCollection } =  require("./mongodb")
 
 const collName = "Users"
@@ -14,6 +15,13 @@ async function findUser(userName) {
     return result
 }
 
+async function findUserById(userId) {
+    const newId = new ObjectId(String(userId))
+    const col = await GetCollection(collName)
+    const result = await col.findOne({_id : newId})
+    return result
+}
+
 async function updateUser(userName, update) {
     const col = await GetCollection(collName)
     const result = await col.updateOne(
@@ -24,4 +32,4 @@ async function updateUser(userName, update) {
 }
 
 
-module.exports = {insertUser, findUser, updateUser};
+module.exports = {insertUser, findUser, updateUser, findUserById};
