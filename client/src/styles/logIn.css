@@ -1,0 +1,93 @@
+body{
+    background-color: #442480;
+    color: #D9D9D9;
+}
+.logIn-button:hover{
+    color: rgb(101, 251, 8);
+}
+
+/* Mobile styles (default) */
+.dex-logo{
+    height: 30%;
+    width: 30%;
+    display: block;
+    margin: auto;
+}
+.create-account,.reset-pass{
+    color:gray;
+    font-size: 13px;
+    text-decoration: none;
+}
+.logIn-Form{
+    text-align: center;
+}
+.label-title{
+    margin-right:90px
+}
+.input-label{
+    border-radius: 30px;
+}
+.pass{
+    font-size: 10px;
+    margin-left:70px;
+}
+.account{
+    font-size: 10px;
+}
+.logIn-button{
+    padding-left:50px;
+    padding-right:50px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+
+/* Desktop styles */
+@media (min-width: 441px) {
+    .logIn-Form {
+        width: 400px;
+        margin: 60px auto;
+        background: rgba(34, 20, 60, 0.85);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        padding: 40px 32px;
+    }
+    .dex-logo {
+        width: 50%;
+        height: 50%
+    }
+    .input-label {
+        width: 90%;
+        font-size: 18px;
+        padding: 10px 16px;
+    }
+    .label-title{
+        margin-left: -230px;
+    }
+    .logIn-button {
+        font-size: 18px;
+        padding: 12px 60px;
+    }
+    .create-account {
+        font-size: 18px;
+    }
+
+    .log-link{
+        text-decoration: none;
+    }
+    
+    .logIn-button:hover {
+        background-color: #341b63;
+        color : #D9D9D9;
+        border-color: #341b63;
+    }
+    
+    .account {
+        font-size: 14px;
+        margin-left: 0;
+    }
+    .pass{
+        margin-left:300px;
+    }
+}

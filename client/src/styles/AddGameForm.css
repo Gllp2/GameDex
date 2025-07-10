@@ -1,0 +1,56 @@
+.add-game-form{
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     margin-top: 300px;
+    gap: 1rem;
+    width: 600px;
+    height: 500px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    background-color: #beb0d9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto; 
+        position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.add-game-form h2 {
+    text-align: center;
+    color: #592a8d;
+    font-size: 35px;
+    margin-bottom: 100px;
+}
+
+
+
+.add-game-form input,
+.add-game-form textarea {
+  padding: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.add-game-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.add-game-form button {
+  padding: 10px;
+  background-color: #57387b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-game-form button:hover {
+  background-color: #624089;
+}
