@@ -52,7 +52,9 @@ app.get("/api/auth/login", async (req, res) => {
 
 app.get("/api/games", async (req, res) => {
 
-    if ( verifyToken() === null) {
+    const token = req.headers.authorization
+
+    if ( verifyToken(token) === false) {
         return res.status(403).json({message:`Invalid token.`})
     }
     const games = await getGames();
@@ -104,13 +106,13 @@ app.patch("/api/users/", async (req, res) => {
             timestamp: new Date()
         }
 
-        const user = await GetUser(body.userId);
+        const user = await GetUser(body.username);
         if (!user) {
             return res.status(404).json({ message: "Utilizador não encontrado." });
         }
 
         if (!user.games.includes(body.gameId)) {
-            await updateUser(body.userId, games, user );
+            await updateUser(body.username, games, user );
         }
 
         return res.status(200).json({

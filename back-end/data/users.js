@@ -10,14 +10,14 @@ async function insertUser(user) {
 
 async function findUser(userName) {
     const col = await GetCollection(collName)
-    const result = await col.findOne({userName : userName})
+    const result = await col.findOne({username : userName})
     return result
 }
 
 async function updateUser(userName, update) {
     const col = await GetCollection(collName)
     const result = await col.updateOne(
-        { userName: userName},
+        { username: userName},
         { $set: {games: update}}
     )
     return result.modifiedCount > 0

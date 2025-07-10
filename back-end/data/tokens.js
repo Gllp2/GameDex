@@ -1,4 +1,6 @@
+const { ObjectId } = require("mongodb")
 const { GetCollection } = require("./mongodb")
+
 
 const COLLECTION = "tokens"
 
@@ -12,7 +14,7 @@ async function insertToken(userId) {
 
 
 async function findToken(token) {
-    const new_token = new ObjectId(token)
+    const new_token = new ObjectId(String(token))
 
     const col = await GetCollection(COLLECTION)
 

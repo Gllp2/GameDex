@@ -1,10 +1,10 @@
-const { GetCollection } =  require("./mongodb")
+const { GetCollection } = require("./mongodb")
 
 const collName = "Publishers"
 
 async function  findPublisher() {
     const col = await GetCollection(collName)
-    const result = await col.find()
+    const result = await col.find().toArray()
     return result
 }
 
