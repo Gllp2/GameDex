@@ -23,5 +23,15 @@ async function findToken(token) {
     return res
 }
 
+async function deleteToken(token) {
+    const new_token = new ObjectId(String(token))
+    
+    const col = await GetCollection(COLLECTION)
 
-module.exports = {insertToken, findToken}
+    const res = await col.deleteOne({_id: new_token})
+
+    return
+}
+
+
+module.exports = {insertToken, findToken, deleteToken}

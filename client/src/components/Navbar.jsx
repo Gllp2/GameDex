@@ -5,6 +5,21 @@ import { NavLink  } from "react-router-dom";
 
 
 const NavBar = () => {
+
+    const handleLogout = async () => {
+        const res = await fetch("http://localhost:3031/api/logout/", {
+            method: "DELETE",
+            headers: {
+                "Authorization": localStorage.getItem("token")
+            }
+        })
+        if(res.status !== 200){
+            return
+        }
+        localStorage.removeItem("token");
+        return
+    }
+
     return (
         <nav className = "navbar">
             <ul className="navigation-list">
@@ -20,7 +35,7 @@ const NavBar = () => {
                             > Contactos 
                             </NavLink></li>
                             <li className="nav-item">
-                        <a href="/" className="nav-link">Log Out</a></li>
+                        <a onClick={() => {handleLogout()}} href="/" className="nav-link">Log Out</a></li>
                         </ul> 
         </nav>
     )

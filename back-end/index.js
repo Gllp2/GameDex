@@ -1,7 +1,7 @@
 const express = require("express")
 const { getGames, getGame } = require("./services/games")
 const { createUser, GetUser, updateUser } = require("./services/users");
-const { createToken, verifyToken } = require("./services/tokens");
+const { createToken, verifyToken, removeToken } = require("./services/tokens");
 const { getPublisher } = require("./services/publisher");
 const app = express();
 const port = 3031;
@@ -35,7 +35,7 @@ app.post("/api/signup", async (req, res) => {
     }
 });
 
-app.get("/api/auth/login", async (req, res) => {
+app.post("/api/auth/login", async (req, res) => {
     const { username, password } = req.body;
 
     const user = await GetUser(username)
@@ -117,6 +117,18 @@ app.patch("/api/users/", async (req, res) => { //add game
         return res.status(500).json({ message: "Erro ao atualizar utilizador." });
     }
 });
+
+app.delete("/api/logout/", async (req, res) => {
+    const token = req.headers.authorization
+    
+    if ( verifyToken(token) === false) {
+        return res.status(403).json({message: `Token not found`})
+    }
+
+    await removeToken(token)
+
+    return res.status(200).json({message: "Success"})
+})
 
 app.listen(port, () => {
     console.log(`Listening on https://localhost:${port}`);

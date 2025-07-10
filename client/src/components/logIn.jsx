@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/logIn.css';
 
 
 function LogIn(){
+
+    const [state, setState] = useState({username: "", password: ""})
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const res = await fetch("http://localhost:3031/api/auth/login/", {
+            body: JSON.stringify(state),
+            method: "POST"
+        })
+
+        if(res.status !== 200){
+            return alert("ERRO")
+        }
+
+        const json = await res.json()
+        localStorage.setItem("token", json.token)
+        return
+    }
+
     return(
         <div className="logIn-Form">
             <img src="/logos/gd.png" alt="" className='dex-logo' />
             <h1></h1>
             <h3>All your games <br />In one place</h3>
-            <form action="">
+            <form action="" onSubmit={(e) => handleSubmit(e)}>
                 <label className='label-title'>Username</label><br />
-                <input className='input-label' type="text" name="" id="" required />
+                <input className='input-label' type="text" onChange={(e) => { setState({...state, username: e.target.value})}} value={state.username} required />
                 <br /><br />
                 <label className='label-title'>Password</label> <br />
-                <input className='input-label' type="password" name="" id="" required />
+                <input className='input-label' type="password" onChange={(e) => { setState({...state, password: e.target.value})}} value={state.password} required />
                 <br /><br />
-                <a href="/library"><button className='logIn-button'>Log In</button></a>
+                <a href="/library"><button type='submit' className='logIn-button'>Log In</button></a>
             </form>
             <p className='pass'>Forgot Password? <br /><a href="" className='reset-pass'>Reset it!</a></p>
             <div>

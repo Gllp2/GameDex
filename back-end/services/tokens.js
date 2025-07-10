@@ -1,4 +1,4 @@
-const { insertToken, findToken } = require("../data/tokens");
+const { insertToken, findToken, deleteToken } = require("../data/tokens");
 
 async function createToken(user){
     if(user && user !== null){
@@ -15,4 +15,8 @@ async function verifyToken(id) {
     return true
 }
 
-module.exports = {createToken, verifyToken}
+async function removeToken(id) {
+    await deleteToken(id)
+}
+
+module.exports = {createToken, verifyToken, removeToken}
