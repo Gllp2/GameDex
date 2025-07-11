@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/AddGameForm.css";
 
-//mapa título - ID (o utilizador escolhe o título [background será buscado o ID])
-
 const AddGameForm = ({ onAdd }) => {
     const [games, setGames] = useState([]);
     const [platforms, setPlatforms] = useState([]);
@@ -31,11 +29,18 @@ const AddGameForm = ({ onAdd }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const payload = {
+            gameId: formData.gameId,
+            platform: formData.platform,
+            price: formData.boughtPrice,
+        }
+
         const res = await fetch("http://localhost:3031/api/users", {
-            body: JSON.stringify(formData),
+            body: JSON.stringify(payload),
             method: "PATCH",
             headers: {
                 Authorization: localStorage.getItem("token"),
+                "content-type": "application/json",
             },
         });
 
@@ -44,6 +49,17 @@ const AddGameForm = ({ onAdd }) => {
         }
 
         return;
+    };
+
+    const handleGameChange = (e) => {
+        const selectedGameName = e.target.value;
+        const selectedGame = games.find((game) => game.name === selectedGameName);
+        setFormData((prevData) => ({
+            ...prevData,
+            gameId: selectedGame ? selectedGame._id : "",
+            platform: "",
+        }));
+        setPlatforms(selectedGame ? selectedGame.platforms : []);
     };
 
     const handleChange = (e) => {
@@ -58,24 +74,22 @@ const AddGameForm = ({ onAdd }) => {
         <form className="add-game-form" onSubmit={handleSubmit}>
             <h2>Adicionar Novo Jogo</h2>
 
-            {/* Título do Jogo - carregado via fetch */}
             <select
                 name="title"
-                value={games.name}
-                onChange={handleChange}
+                value={formData.gameId ? games.find(g => g._id === formData.gameId)?.name : ""}
+                onChange={handleGameChange}
                 required
             >
                 <option className="option-select" value="">
                     Selecione um jogo
                 </option>
-                {games.map((games) => (
-                    <option key={games._id} value={games.name}>
-                        {games.name}
+                {games.map((game) => (
+                    <option key={game._id} value={game.name}>
+                        {game.name}
                     </option>
                 ))}
             </select>
 
-            {/* Plataforma - carregada via fetch 
             <select
                 name="platform"
                 value={formData.platform}
@@ -85,14 +99,13 @@ const AddGameForm = ({ onAdd }) => {
                 <option className="option-select" value="">
                     Selecione a Plataforma
                 </option>
-                {availablePlatforms.map((platform) => (
-                    <option key={platform.id} value={platform.name}>
-                        {platform.name}
+                {platforms.map((platform, idx) => (
+                    <option key={idx} value={platform}>
+                        {platform}
                     </option>
                 ))}
-            </select>*/}
+            </select>
 
-            {/* Preço Comprado */}
             <input
                 type="number"
                 name="boughtPrice"
