@@ -1,5 +1,6 @@
 import { FaPlaystation } from 'react-icons/fa';
 
+
 export default function CollectionHistory() {
   return (
     <div className="collection-history">

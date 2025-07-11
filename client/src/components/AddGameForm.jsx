@@ -6,15 +6,21 @@ import "../styles/AddGameForm.css";
 
 const AddGameForm = ({ onAdd }) => {
     const [games, setGames] = useState([]);
+    const [platforms, setPlatforms] = useState([]);
 
-    setGames(async function fetchGames() {
-        const gamesJson = await fetch("http://localhost:3031/api/games", {
-            method: "GET",
-            headers: {
-                Authorization: localStorage.getItem("token"),
-            },
-        })
-    });
+    useEffect(() => {
+        async function fetchGames() {
+            const response = await fetch("http://localhost:3031/api/games", {
+                method: "GET",
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            });
+            const gamesJson = await response.json();
+            setGames(gamesJson);
+        }
+        fetchGames();
+    }, []);
 
     const [formData, setFormData] = useState({
         gameId: "",
@@ -40,22 +46,6 @@ const AddGameForm = ({ onAdd }) => {
         return;
     };
 
-    const [availableTitles, setAvailableTitles] = useState([]);
-    const [availablePlatforms, setAvailablePlatforms] = useState([]);
-
-    // Buscar títulos e plataformas da base de dados
-    useEffect(() => {
-        fetch("/api/games")
-            .then((res) => res.json())
-            .then((data) => setAvailableTitles(data))
-            .catch((err) => console.error("Erro ao buscar títulos:", err));
-
-        fetch("/api/platforms") // Substitua pela sua rota real
-            .then((res) => res.json())
-            .then((data) => setAvailablePlatforms(data))
-            .catch((err) => console.error("Erro ao buscar plataformas:", err));
-    }, []);
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -71,21 +61,21 @@ const AddGameForm = ({ onAdd }) => {
             {/* Título do Jogo - carregado via fetch */}
             <select
                 name="title"
-                value={formData.title}
+                value={games.name}
                 onChange={handleChange}
                 required
             >
                 <option className="option-select" value="">
                     Selecione um jogo
                 </option>
-                {availableTitles.map((games) => (
+                {games.map((games) => (
                     <option key={games._id} value={games.name}>
                         {games.name}
                     </option>
                 ))}
             </select>
 
-            {/* Plataforma - carregada via fetch */}
+            {/* Plataforma - carregada via fetch 
             <select
                 name="platform"
                 value={formData.platform}
@@ -100,7 +90,7 @@ const AddGameForm = ({ onAdd }) => {
                         {platform.name}
                     </option>
                 ))}
-            </select>
+            </select>*/}
 
             {/* Preço Comprado */}
             <input
