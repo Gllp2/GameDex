@@ -2,21 +2,24 @@ import React, { useState } from "react";
 import "../styles/LibraryFilters.css";
 
 const LibraryFilters = () => {
-  const [order, setOrder] = useState("A-Z");
-  const [platforms, setPlatforms] = useState({
-    PS: false,
-    Steam: false,
-    Epic: false,
-    EA: false,
-    Xbox: false,
-  });
-  const [price, setPrice] = useState("<10€");
+  const { order, platforms, price } = filters;
+
+  const handleOrderChange = (e) => {
+    onChange({ ...filters, order: e.target.value });
+  };
 
   const handlePlatformChange = (e) => {
-    setPlatforms({
-      ...platforms,
-      [e.target.name]: e.target.checked,
+    onChange({
+      ...filters,
+      platforms: {
+        ...platforms,
+        [e.target.name]: e.target.checked,
+      },
     });
+  };
+
+   const handlePriceChange = (e) => {
+    onChange({ ...filters, price: e.target.value });
   };
 
   return (
@@ -24,7 +27,7 @@ const LibraryFilters = () => {
       {/* Ordem Dropdown */}
       <div className="dropdown">
         <label>Ordem</label>
-        <select value={order} onChange={(e) => setOrder(e.target.value)}>
+        <select value={order} onChange={handleOrderChange}>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
           <option value="€⬆">€⬆</option>
@@ -38,58 +41,24 @@ const LibraryFilters = () => {
       <div className="dropdown">
         <label>Plataforma</label>
         <div className="dropdown-checkboxes">
-          <label>
-            <input
-              type="checkbox"
-              name="PS"
-              checked={platforms.PS}
-              onChange={handlePlatformChange}
-            />
-            PS
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="Steam"
-              checked={platforms.Steam}
-              onChange={handlePlatformChange}
-            />
-            Steam
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="Epic"
-              checked={platforms.Epic}
-              onChange={handlePlatformChange}
-            />
-            Epic
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="EA"
-              checked={platforms.EA}
-              onChange={handlePlatformChange}
-            />
-            EA
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="Xbox"
-              checked={platforms.Xbox}
-              onChange={handlePlatformChange}
-            />
-            Xbox
-          </label>
+          {Object.keys(platforms).map((platform) => (
+            <label key={platform}>
+              <input
+                type="checkbox"
+                name={platform}
+                checked={platforms[platform]}
+                onChange={handlePlatformChange}
+              />
+              {platform}
+            </label>
+          ))}
         </div>
       </div>
 
       {/* Preço Dropdown */}
       <div className="dropdown">
         <label>Preço</label>
-        <select value={price} onChange={(e) => setPrice(e.target.value)}>
+        <select value={price} onChange={handlePriceChange}>
           <option value="<10€">&lt;10€</option>
           <option value="10-30€">10-30€</option>
           <option value="30-50€">30-50€</option>
