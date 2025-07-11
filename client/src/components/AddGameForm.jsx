@@ -13,9 +13,7 @@ const AddGameForm = ({ onAdd }) => {
             headers: {
                 Authorization: localStorage.getItem("token"),
             },
-        }).map((e) => {
-            JSON.parse(e);
-        });
+        })
     });
 
     const [formData, setFormData] = useState({

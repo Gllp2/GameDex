@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import '../styles/logIn.css';
+import { useNavigate } from 'react-router-dom';
 
 
 function LogIn(){
 
     const [state, setState] = useState({username: "", password: ""})
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         const res = await fetch("http://localhost:3031/api/auth/login/", {
+            headers: {
+                'Content-Type': 'application/json',
+                "Accept": "application/json"
+            },
             body: JSON.stringify(state),
             method: "POST"
         })
@@ -20,7 +26,7 @@ function LogIn(){
 
         const json = await res.json()
         localStorage.setItem("token", json.token)
-        return
+        navigate("/library") 
     }
 
     return(

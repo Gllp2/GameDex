@@ -5,8 +5,10 @@ const { createToken, verifyToken, removeToken } = require("./services/tokens");
 const { getPublisher } = require("./services/publisher");
 const app = express();
 const port = 3031;
-
+const cors = require("cors")
 app.use(express.json());
+
+app.use(cors())
 
 app.post("/api/signup", async (req, res) => {
     const body = req.body;
@@ -37,7 +39,7 @@ app.post("/api/signup", async (req, res) => {
 
 app.post("/api/auth/login", async (req, res) => {
     const { username, password } = req.body;
-
+    
     const user = await GetUser(username)
 
     const token = await createToken(user)
