@@ -7,6 +7,25 @@ import BannerChanger from '../components/banner-changer';
 import Header from '../components/Header';
 
 function ProfilePage() {
+  const [games, setGames] = useState([]);
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    async function fetchUser() {
+      const token = localStorage.getItem('token');
+      const res = await fetch('/api/users/me', {
+        headers: { Authorization: token }
+      });
+      if (res.ok) {
+        const user = await res.json();
+        setGames(user.games || []);
+        setUsername(user.username || '');
+      }
+      }
+    fetchUser();
+  }, []);
+
+  const totalSpent = games.reduce((sum, g) => sum + (g.user_value || 0), 0);
   return (
     <>
       <Header />
@@ -17,16 +36,16 @@ function ProfilePage() {
             <h1>Profile</h1>
             <img src="/banner/pfp.png" alt="" className="profile-img" />
             <h3>
-              <span className="username">(Username)</span> Joined July 2025
+              <span className="username">{username}</span> Joined July 2025
             </h3>
             <div className="stat-group">
               <div className="stat">
-                <span className="number">45</span>
+                <span className="number">{games.length}</span>
                 <span className="label">Owned Games</span>
               </div>
               <div className="stat">
                 <span className="number">
-                  450<span className="currency">$</span>
+                  {totalSpent}<span className="currency">€</span>
                 </span>
                 <span className="label">Spent</span>
               </div>

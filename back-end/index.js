@@ -132,6 +132,19 @@ app.delete("/api/logout/", async (req, res) => {
     return res.status(200).json({message: "Success"})
 })
 
+app.get("/api/users/me", async (req, res) => {
+    const token = req.headers.authorization;
+    if (await verifyToken(token) === false) {
+        return res.status(403).json({ message: "Invalid token." });
+    }
+    const tokenData = await findToken(token);
+    const user = await findUserById(tokenData.uid);
+    if (!user) {
+        return res.status(404).json({ message: "User not found." });
+    }
+    return res.status(200).json(user);
+});
+
 app.listen(port, () => {
     console.log(`Listening on https://localhost:${port}`);
 });
