@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from 'react';
 import "../styles/LibraryFilters.css";
 
-const LibraryFilters = () => {
+const LibraryFilters = ({ filters, onChange }) => {
   const { order, platforms, price } = filters;
 
   const handleOrderChange = (e) => {

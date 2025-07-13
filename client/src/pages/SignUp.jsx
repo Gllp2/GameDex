@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import FloatingLogosBackground from '../components/floating-logos-background';
 import SignUp from '../components/signUp';
 

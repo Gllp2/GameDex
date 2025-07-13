@@ -21,24 +21,24 @@ export default function BannerChanger({ children }) {
   }
 
   return (
-  <div
-    className="banner-background"
-    style={{
-      backgroundImage: `url(/banner/${bannerImages[current]})`,
-    }}
-  >
-    <div className="banner-overlay"></div>
-    <div className="banner-content">
-      <button
-        onClick={changeBanner}
-        className="banner-changer-button-topright"
-        aria-label="Trocar banner"
-        style={{ backgroundColor: "transparent" , marginTop: "16px" }}
-      >
-        🔄
-      </button>
-      {children}
+    <div
+      className="banner-background"
+      style={{
+        backgroundImage: `url(/banner/${bannerImages[current]})`,
+      }}
+    >
+      <div className="banner-overlay"></div>
+      <div className="banner-content">
+        <button
+          onClick={changeBanner}
+          className="banner-changer-button-topright"
+          aria-label="Trocar banner"
+          style={{ backgroundColor: "transparent", marginTop: "16px" }}
+        >
+          🔄
+        </button>
+        {children}
+      </div>
     </div>
-  </div>
-);
+  );
 }
