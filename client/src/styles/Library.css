@@ -1,0 +1,24 @@
+.library-container{
+    padding: 40px 20px;
+    background-color: #3b1c5e;  
+    font-family: 'Segoe UI', sans-serif; 
+    margin-top: 2.5px;
+    align-self: center;
+} 
+
+
+.library-title{
+    text-align:center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: #e7dbfe
+}
+
+.library-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 125px;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around
+}

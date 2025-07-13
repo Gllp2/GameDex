@@ -1,0 +1,123 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import "../styles/AddGameForm.css";
+
+const AddGameForm = ({ onAdd }) => {
+    const [games, setGames] = useState([]);
+    const [platforms, setPlatforms] = useState([]);
+
+    useEffect(() => {
+        async function fetchGames() {
+            const response = await fetch("http://localhost:3031/api/games", {
+                method: "GET",
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            });
+            const gamesJson = await response.json();
+            setGames(gamesJson);
+        }
+        fetchGames();
+    }, []);
+
+    const [formData, setFormData] = useState({
+        gameId: "",
+        platform: "",
+        boughtPrice: "",
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            gameId: formData.gameId,
+            platform: formData.platform,
+            price: formData.boughtPrice,
+        }
+
+        const res = await fetch("http://localhost:3031/api/users", {
+            body: JSON.stringify(payload),
+            method: "PATCH",
+            headers: {
+                Authorization: localStorage.getItem("token"),
+                "content-type": "application/json",
+            },
+        });
+
+        if (res.status !== 200) {
+            return alert("ERRO");
+        }
+
+        return;
+    };
+
+    const handleGameChange = (e) => {
+        const selectedGameName = e.target.value;
+        const selectedGame = games.find((game) => game.name === selectedGameName);
+        setFormData((prevData) => ({
+            ...prevData,
+            gameId: selectedGame ? selectedGame._id : "",
+            platform: "",
+        }));
+        setPlatforms(selectedGame ? selectedGame.platforms : []);
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    return (
+        <form className="add-game-form" onSubmit={handleSubmit}>
+            <h2>Adicionar Novo Jogo</h2>
+
+            <select
+                name="title"
+                value={formData.gameId ? games.find(g => g._id === formData.gameId)?.name : ""}
+                onChange={handleGameChange}
+                required
+            >
+                <option className="option-select" value="">
+                    Selecione um jogo
+                </option>
+                {games.map((game) => (
+                    <option key={game._id} value={game.name}>
+                        {game.name}
+                    </option>
+                ))}
+            </select>
+
+            <select
+                name="platform"
+                value={formData.platform}
+                onChange={handleChange}
+                required
+            >
+                <option className="option-select" value="">
+                    Selecione a Plataforma
+                </option>
+                {platforms.map((platform, idx) => (
+                    <option key={idx} value={platform}>
+                        {platform}
+                    </option>
+                ))}
+            </select>
+
+            <input
+                type="number"
+                name="boughtPrice"
+                placeholder="Preço que Pagaste (€)"
+                value={formData.boughtPrice}
+                onChange={handleChange}
+                required
+            />
+
+            <button type="submit">Adicionar à tua Biblioteca</button>
+        </form>
+    );
+};
+
+export default AddGameForm;
