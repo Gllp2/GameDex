@@ -2,10 +2,10 @@ import React from 'react';
 import '../styles/GameCard.css';
 import { useNavigate } from 'react-router-dom';
 
-const GameCard = ({ title, image, year, genre, platform }) => {
-    const navigate = useNavigate()
-    const handleClick = () => { 
-        navigate(`/game/${title}`);
+const GameCard = ({ title, platform, _id }) => {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(`/game/${_id}`);
     };
     return ( 
         <div className = "game-card" onClick={handleClick}>

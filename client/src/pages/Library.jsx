@@ -78,14 +78,18 @@ const Library = () => {
         <div className="library-container">
             <h1 className="library-title"> Your game library</h1>
             <div className="library-grid">
-              {filteredGames.map(game => (
-                        <GameCard
-                            key={game._id}
-                            title={game.name || "Untitled"}
-                            genre={game.genre}
-                            platform={game.platform}
-                        />
-                    ))}    
+              {filteredGames.map(game => {
+                console.log('Game _id:', game._id, 'Title:', game.name);
+                return (
+                    <GameCard
+                    key={game._id}
+                    _id={game._id}
+                    title={game.name || "Untitled"}
+                    genre={game.genre}
+                    platform={game.platform}
+                    />
+                );
+                })} 
               </div>
         </div>
               <AddGameButton />
