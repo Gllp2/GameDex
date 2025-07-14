@@ -14,7 +14,7 @@ function ProfilePage() {
   useEffect(() => {
     async function fetchUser() {
       const token = localStorage.getItem('token');
-      const res = await fetch('/api/users/me', {
+      const res = await fetch('http://localhost:3031/api/users/me', {
         headers: { Authorization: token }
       });
       if (res.ok) {
@@ -26,7 +26,14 @@ function ProfilePage() {
     fetchUser();
   }, []);
 
-  const totalSpent = games.reduce((sum, g) => sum + (g.user_value || 0), 0);
+  const totalSpent = games.reduce((sum, g) => {
+  let value = g.user_value;
+  if (typeof value === "string") {
+    value = value.replace("€", "").replace(",", ".").trim();
+    value = parseFloat(value) || 0;
+  }
+  return sum + value;
+}, 0);
   return (
     <>
       <Header />
@@ -54,7 +61,7 @@ function ProfilePage() {
           </BannerChanger>
           <section className="profile-extra-section">
             <PlatformUsernames />
-            <CollectionHistory />
+            <CollectionHistory games = {games}/>
           </section>
         </div>
         <Profile />
