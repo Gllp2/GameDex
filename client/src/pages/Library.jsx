@@ -59,12 +59,14 @@ const Library = () => {
             return true;
         })
         .sort((a, b) => {
-            if (filters.order === "A-Z") return a.title.localeCompare(b.title);
-            if (filters.order === "Z-A") return b.title.localeCompare(a.title);
+            const titleA = a.title || "";
+            const titleB = b.title || "";
+            if (filters.order === "A-Z") return titleA.localeCompare(titleB);
+            if (filters.order === "Z-A") return titleB.localeCompare(titleA);
             if (filters.order === "€⬆") return (a.user_value || 0) - (b.user_value || 0);
             if (filters.order === "€⬇") return (b.user_value || 0) - (a.user_value || 0);
             return 0;
-        });
+        })
 
         const handleFiltersChange = (newFilters) => setFilters(newFilters);
 
@@ -79,10 +81,7 @@ const Library = () => {
               {filteredGames.map(game => (
                         <GameCard
                             key={game._id}
-                            title={game.title}
-                            description={game.description}
-                            image={game.image}
-                            year={game.year}
+                            title={game.name || "Untitled"}
                             genre={game.genre}
                             platform={game.platform}
                         />

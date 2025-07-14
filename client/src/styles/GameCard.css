@@ -33,14 +33,11 @@
     color: #3b1c5e;
     margin: 0;
 }
-
-.gaming-card-description{
-    font-size: 14px;
-    color: #555;
+.gaming-card-platform{
+    font-size: 16px;
+    color: #3b1c5e;
     margin: 0;
 }
-
-
 .game-card-info{
     font-size: 13px;
     color: #777;
