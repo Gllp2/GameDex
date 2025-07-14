@@ -33,7 +33,7 @@ function LogIn(){
         <div className="logIn-Form">
             <img src="/logos/gd.png" alt="" className='dex-logo' />
             <h1></h1>
-            <div className='slogan'>All your games <br />In one place</div>
+            <div className='slogan-login'>All your games <br />In one place</div>
             <form action="" onSubmit={(e) => handleSubmit(e)}>
                 <label className='label-title'>Username</label><br />
                 <input className='input-label' type="text" onChange={(e) => { setState({...state, username: e.target.value})}} value={state.username} required />

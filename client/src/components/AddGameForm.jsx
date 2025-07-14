@@ -35,8 +35,6 @@ const AddGameForm = ({ onAdd }) => {
             price: formData.boughtPrice,
         };
 
-        console.log("Submitting payload:", payload);
-
         const res = await fetch("http://localhost:3032/api/users", {
             body: JSON.stringify(payload),
             method: "PATCH",

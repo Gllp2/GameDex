@@ -1,20 +1,21 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import FloatingLogosBackground from '../components/floating-logos-background';
-import SignUp from '../components/signUp';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import FloatingLogosBackground from "../components/floating-logos-background";
+import SignUp from "../components/signUp";
+import GradientBackground from "../components/LandingPage";
 
 function SignUpPage() {
-  const [form, setForm] = useState({
-    email: '',
-    username: '',
-    password: '',
-    passwordConfirmation: ''
-  });
+    const [form, setForm] = useState({
+        email: "",
+        username: "",
+        password: "",
+        passwordConfirmation: "",
+    });
 
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const navigate = useNavigate();
-
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+    const navigate = useNavigate();
+    
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -54,18 +55,18 @@ function SignUpPage() {
     }
   };
 
-  return (
-    <div>
-        <FloatingLogosBackground />
-        <SignUp 
-          form={form}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          error={error}
-          success={success}
-        />
-    </div>
-  );
+    return (
+        <div className="fluid-background">
+            <GradientBackground />
+            <SignUp
+                form={form}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                error={error}
+                success={success}
+            />
+        </div>
+    );
 }
 
 export default SignUpPage;
