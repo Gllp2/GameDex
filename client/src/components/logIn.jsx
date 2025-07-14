@@ -33,7 +33,7 @@ function LogIn(){
         <div className="logIn-Form">
             <img src="/logos/gd.png" alt="" className='dex-logo' />
             <h1></h1>
-            <h3>All your games <br />In one place</h3>
+            <div className='slogan'>All your games <br />In one place</div>
             <form action="" onSubmit={(e) => handleSubmit(e)}>
                 <label className='label-title'>Username</label><br />
                 <input className='input-label' type="text" onChange={(e) => { setState({...state, username: e.target.value})}} value={state.username} required />
@@ -41,7 +41,7 @@ function LogIn(){
                 <label className='label-title'>Password</label> <br />
                 <input className='input-label' type="password" onChange={(e) => { setState({...state, password: e.target.value})}} value={state.password} required />
                 <br /><br />
-                <a href="/library"><button type='submit' className='logIn-button'>Log In</button></a>
+                <button type='submit' href="/library" className='logIn-button'>Log In</button>
             </form>
             <p className='pass'>Forgot Password? <br /><a href="" className='reset-pass'>Reset it!</a></p>
             <div>

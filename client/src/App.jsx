@@ -15,14 +15,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LogInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/" element={<LogInPage />} /> //done
+        <Route path="/signup" element={<SignUpPage />} /> //done
+        <Route path="/profile" element={<ProfilePage />} /> //done
         <Route path="/contacts" element={<ContactsPage />} /> 
-        <Route path="/library" element={<LibraryPage />} />
+        <Route path="/library" element={<LibraryPage />} /> //done
         <Route path="/game/:id" element={<GameDetailsPage/>} /> 
-        <Route path="/addgame" element={<AddGamePage/>} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/addgame" element={<AddGamePage/>} /> //done
+
         
       </Routes>
     </Router>

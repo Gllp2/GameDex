@@ -72,7 +72,7 @@ const AddGameForm = ({ onAdd }) => {
 
     return (
         <form className="add-game-form" onSubmit={handleSubmit}>
-            <h2>Adicionar Novo Jogo</h2>
+            <h2>Add New Game</h2>
 
             <select
                 name="title"
@@ -81,7 +81,7 @@ const AddGameForm = ({ onAdd }) => {
                 required
             >
                 <option className="option-select" value="">
-                    Selecione um jogo
+                    Select A Game
                 </option>
                 {games.map((game) => (
                     <option key={game._id} value={game.name}>
@@ -97,7 +97,7 @@ const AddGameForm = ({ onAdd }) => {
                 required
             >
                 <option className="option-select" value="">
-                    Selecione a Plataforma
+                    Select The Platform
                 </option>
                 {platforms.map((platform, idx) => (
                     <option key={idx} value={platform}>
@@ -109,13 +109,13 @@ const AddGameForm = ({ onAdd }) => {
             <input
                 type="number"
                 name="boughtPrice"
-                placeholder="Preço que Pagaste (€)"
+                placeholder="Bought Price (€)"
                 value={formData.boughtPrice}
                 onChange={handleChange}
                 required
             />
 
-            <button type="submit">Adicionar à tua Biblioteca</button>
+            <button type="submit">Add To Library</button>
         </form>
     );
 };

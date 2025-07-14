@@ -3,7 +3,6 @@ import FloatingLogosBackground from '../components/floating-logos-background';
 import Profile from '../components/Profile';
 import '../styles/Profile.css'
 import CollectionHistory from '../components/CollectionHistory';
-import PlatformUsernames from '../components/PlatformUsernames';
 import BannerChanger from '../components/banner-changer';
 import Header from '../components/Header';
 
@@ -60,7 +59,6 @@ function ProfilePage() {
             </div>
           </BannerChanger>
           <section className="profile-extra-section">
-            <PlatformUsernames />
             <CollectionHistory games = {games}/>
           </section>
         </div>

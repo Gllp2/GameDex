@@ -18,7 +18,7 @@ const Contactos = () => {
                     <div className="social-section">
                         <ul> <h2>Find us at:</h2> 
                             <li><a href="#discord">Discord</a></li> 
-                            <li><a href="#twitter">Twiiter / X </a></li>
+                            <li><a href="#twitter">Twitter / X </a></li>
                             <li><a href="#Youtube">Youtube </a></li> 
                             <li><a href="#LinkedIn">LinkedIn</a> </li>
                         </ul> 
@@ -38,7 +38,7 @@ const Contactos = () => {
                     <input type="email" placeholder="Your email" is required />
                     <br></br>
 
-                    <label> Mensagem: </label>
+                    <label> Message: </label>
                     <textarea placeholder="Your message" required />
                     <br></br>
 
