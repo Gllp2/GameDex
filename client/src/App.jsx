@@ -8,22 +8,22 @@ import ContactsPage from './pages/Contacts';
 import LibraryPage from './pages/Library';
 import GameDetailsPage from './pages/GameDetails'; 
 import AddGamePage from './pages/AddGame';
-import AboutPage from './pages/AboutUs';
+import LandingPage from './pages/LandingPage';
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LogInPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LogInPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/contacts" element={<ContactsPage />} /> 
         <Route path="/library" element={<LibraryPage />} />
         <Route path="/game/:title" element={<GameDetailsPage/>} /> 
         <Route path="/addgame" element={<AddGamePage/>} />
-        <Route path="/about" element={<AboutPage />} />
-        
+
       </Routes>
     </Router>
   );
