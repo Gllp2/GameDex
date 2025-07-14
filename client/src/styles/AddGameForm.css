@@ -1,57 +1,125 @@
-.add-game-form{
-     display: flex;
-     justify-content: center;
-     flex-direction: column;
-     margin-top: 300px;
-    gap: 1rem;
-    width: 600px;
-    height: 500px;
-    padding-right: 2rem;
-    padding-left: 2rem;
-    background-color: #beb0d9;
-    opacity: 75%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-left: auto;
-    margin-right: auto; 
-        position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.addgame-container {
+  width: 440px;
+  margin: 60px auto;
+  background: rgba(34, 20, 60, 0.88);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(60, 20, 100, 0.18);
+  padding: 44px 36px 36px 36px;
+  font-family: "Istok Web", sans-serif;
+  color: #e7dbfe;
+  text-align: center;
+}
+
+.add-game-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .add-game-form h2 {
-    text-align: center;
-    color: #592a8d;
-    font-size: 35px;
-    margin-bottom: 100px;
+  font-family: "Gruppo", sans-serif;
+  font-size: 2.1rem;
+  color: #e7dbfe;
+  margin-bottom: 28px;
+  letter-spacing: 1px;
 }
 
-
+.add-game-form label {
+  font-weight: 700;
+  color: #a98be4;
+  margin-bottom: 6px;
+  font-size: 1.08rem;
+  text-align: left;
+}
 
 .add-game-form input,
+.add-game-form select,
 .add-game-form textarea {
-  padding: 15px;
-  border: 1.5px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: 12px 18px;
+  border: 1.5px solid #a98be4;
+  border-radius: 12px;
+  font-size: 1.08rem;
+  background: #f7f3ff;
+  color: #3b1c5e;
+  transition: border 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-game-form input:focus,
+.add-game-form select:focus,
+.add-game-form textarea:focus {
+  border: 1.5px solid #7b3ebc;
+  outline: none;
 }
 
 .add-game-form textarea {
+  min-height: 90px;
   resize: vertical;
-  min-height: 100px;
 }
 
 .add-game-form button {
-  padding: 10px;
-  background-color: #57387b;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: rgb(104, 85, 224);
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(104, 85, 224, 1);
+  font-size: 20px;
+  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(154, 139, 250, 0.2);
+  transition: 0.4s;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: block;
 }
 
 .add-game-form button:hover {
-  background-color: #624089;
+  color: white;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgb(125, 106, 242);
+}
+
+@media (max-width: 600px) {
+  .add-game-form button {
+    font-size: 1rem;
+    padding: 10px 0;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .add-game-form {
+    gap: 12px;
+  }
+  .add-game-form label {
+    font-size: 1rem;
+  }
+  .add-game-form input,
+  .add-game-form select,
+  .add-game-form textarea {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .add-game-form textarea {
+    min-height: 60px;
+  }
+  .add-game-form button {
+    font-size: 1rem;
+    padding: 10px 0;
+    border-radius: 8px;
+  }
 }

@@ -1,11 +1,12 @@
 .floating-logos-bg {
-  position: absolute;
+  position: fixed; /* or absolute if you want it inside a parent */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh; /* covers the viewport */
+  pointer-events: none; /* so it doesn't block clicks */
+  z-index: -1; /* or a value that puts it behind your content */
   overflow: hidden;
-  z-index: -1;
 }
 
 .floating-logo {

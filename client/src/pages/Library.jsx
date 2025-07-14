@@ -59,12 +59,14 @@ const Library = () => {
             return true;
         })
         .sort((a, b) => {
-            if (filters.order === "A-Z") return a.title.localeCompare(b.title);
-            if (filters.order === "Z-A") return b.title.localeCompare(a.title);
+            const titleA = a.title || "";
+            const titleB = b.title || "";
+            if (filters.order === "A-Z") return titleA.localeCompare(titleB);
+            if (filters.order === "Z-A") return titleB.localeCompare(titleA);
             if (filters.order === "€⬆") return (a.user_value || 0) - (b.user_value || 0);
             if (filters.order === "€⬇") return (b.user_value || 0) - (a.user_value || 0);
             return 0;
-        });
+        })
 
         const handleFiltersChange = (newFilters) => setFilters(newFilters);
 
@@ -76,17 +78,18 @@ const Library = () => {
         <div className="library-container">
             <h1 className="library-title"> Your game library</h1>
             <div className="library-grid">
-              {filteredGames.map(game => (
-                        <GameCard
-                            key={game._id}
-                            title={game.title}
-                            description={game.description}
-                            image={game.image}
-                            year={game.year}
-                            genre={game.genre}
-                            platform={game.platform}
-                        />
-                    ))}    
+              {filteredGames.map(game => {
+                console.log('Game _id:', game._id, 'Title:', game.name);
+                return (
+                    <GameCard
+                    key={game._id}
+                    _id={game._id}
+                    title={game.name || "Untitled"}
+                    genre={game.genre}
+                    platform={game.platform}
+                    />
+                );
+                })} 
               </div>
         </div>
               <AddGameButton />

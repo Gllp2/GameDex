@@ -1,12 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 body{
     background-color: #442480;
     color: #D9D9D9;
 }
-.logIn-button:hover{
-    color: rgb(101, 251, 8);
+
+
+.slogan {
+    font-family: "Gruppo", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-/* Mobile styles (default) */
+
 .dex-logo{
     height: 30%;
     width: 30%;
@@ -17,12 +24,18 @@ body{
     color:gray;
     font-size: 13px;
     text-decoration: none;
+    font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .logIn-Form{
     text-align: center;
 }
 .label-title{
-    margin-right:90px
+    margin-right:90px;
+    font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .input-label{
     border-radius: 30px;
@@ -30,17 +43,43 @@ body{
 .pass{
     font-size: 10px;
     margin-left:70px;
+    font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .account{
     font-size: 10px;
+    font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .logIn-button{
     padding-left:50px;
     padding-right:50px;
-    border-radius: 20px;
+    color: rgb(104, 85, 224);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(104, 85, 224, 1);
+    transition: 0.6s;
     font-size: 12px;
     text-decoration: none;
+    cursor: pointer;
+    font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+    width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  
 }
+
+.logIn-button:hover {
+  color: white;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgba(104, 85, 224, 1);
+
+}
+
+
 
 
 /* Desktop styles */
@@ -80,6 +119,7 @@ body{
     .logIn-button:hover {
         background-color: #341b63;
         color : #D9D9D9;
+        transition: 0.5s ease ease-in-out;
         border-color: #341b63;
     }
     

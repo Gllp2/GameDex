@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/floating-logos-background.css";
 
 const logoSources = [
@@ -13,16 +12,13 @@ const logoSources = [
 
 const getRandom = (min, max) => Math.random() * (max - min) + min;
 
-const FloatingLogosBackground = ({ count = 30 }) => {
+const generateFloatingLogos = (count) => {
   const positions = [];
-
-  const floatingLogos = Array.from({ length: count }).map((_, index) => {
+  return Array.from({ length: count }).map((_, index) => {
     const src = logoSources[Math.floor(Math.random() * logoSources.length)];
 
     let top, left;
     let tries = 0;
-
-    
     do {
       top = getRandom(5, 90);
       left = getRandom(5, 90);
@@ -41,8 +37,8 @@ const FloatingLogosBackground = ({ count = 30 }) => {
     const rotation = getRandom(0, 360);
     let opacity = getRandom(0.1, 0.5);
     if (src.endsWith("ps.png")) {
-  opacity = 0.6; 
-}
+      opacity = 0.6;
+    }
     const duration = getRandom(8, 16);
     const delay = getRandom(0, 6);
 
@@ -66,8 +62,16 @@ const FloatingLogosBackground = ({ count = 30 }) => {
       />
     );
   });
+};
 
-  return <div className="floating-logos-bg">{floatingLogos}</div>;
+const FloatingLogosBackground = ({ count = 30 }) => {
+  const logosRef = useRef(null);
+
+  if (!logosRef.current) {
+    logosRef.current = generateFloatingLogos(count);
+  }
+
+  return <div className="floating-logos-bg">{logosRef.current}</div>;
 };
 
 export default FloatingLogosBackground;

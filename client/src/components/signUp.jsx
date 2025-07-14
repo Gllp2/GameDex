@@ -6,9 +6,8 @@ function SignUp({ form, onChange, onSubmit, error, success }){
     return(
         <div className="signUp-Form">
             <img src="/logos/gd.png" alt="" className='dex-logo' />
-            <h1></h1>
             <h3>All your games <br />In one place</h3>
-            <form action="">
+            <form onSubmit={onSubmit}>
                 <label className='label-title'>Username</label><br />
                 <input
                     className='input-label'

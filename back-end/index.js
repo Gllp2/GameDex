@@ -3,6 +3,8 @@ const { getGames, getGame } = require("./services/games")
 const { createUser, GetUser, updateUser } = require("./services/users");
 const { createToken, verifyToken, removeToken } = require("./services/tokens");
 const { getPublisher } = require("./services/publisher");
+const { findToken } = require('./data/tokens');
+const { findUserById } = require('./data/users');
 const app = express();
 const port = 3031;
 const cors = require("cors")
@@ -134,6 +136,7 @@ app.delete("/api/logout/", async (req, res) => {
 
 app.get("/api/users/me", async (req, res) => {
     const token = req.headers.authorization;
+    console.log("Olá")
     if (await verifyToken(token) === false) {
         return res.status(403).json({ message: "Invalid token." });
     }
@@ -142,6 +145,7 @@ app.get("/api/users/me", async (req, res) => {
     if (!user) {
         return res.status(404).json({ message: "User not found." });
     }
+    console.log(user)
     return res.status(200).json(user);
 });
 
