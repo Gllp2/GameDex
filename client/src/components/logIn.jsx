@@ -11,7 +11,7 @@ function LogIn(){
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const res = await fetch("http://localhost:3031/api/auth/login/", {
+        const res = await fetch("http://localhost:3032/api/auth/login/", {
             headers: {
                 'Content-Type': 'application/json',
                 "Accept": "application/json"

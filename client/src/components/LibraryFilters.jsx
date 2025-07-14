@@ -104,8 +104,11 @@ const LibraryFilters = ({ filters, onChange }) => {
       {/* Preço Dropdown */}
       <div className="dropdown">
         <label>Price</label>
-        <select value={price} onChange={handlePriceChange}>
+        <select value={price
+        
+        } onChange={handlePriceChange}>
           <option value="<10€">&lt;10€</option>
+          <option value="all">All prices</option>
           <option value="10-30€">10-30€</option>
           <option value="30-50€">30-50€</option>
           <option value=">50€">&gt;50€</option>

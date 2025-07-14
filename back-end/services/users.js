@@ -13,8 +13,8 @@ async function updateUser(update, tokenId) {
     const token =  await findToken(tokenId)
     const user = await findUserById(token.uid)
     const newUpdate = [...user.games, update]
-    if (!user.games.includes(update.gameId)) {
-        return "User already has this game"
+    if (user.games.some(g => String(g.game_id) === String(update.gameId))) {
+    return "User already has this game";
     }
     return await updateUserData(user.username, newUpdate)
 }

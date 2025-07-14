@@ -6,7 +6,7 @@ const { getPublisher } = require("./services/publisher");
 const { findToken } = require('./data/tokens');
 const { findUserById } = require('./data/users');
 const app = express();
-const port = 3031;
+const port = 3032;
 const cors = require("cors")
 app.use(express.json());
 

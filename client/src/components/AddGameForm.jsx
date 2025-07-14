@@ -8,7 +8,7 @@ const AddGameForm = ({ onAdd }) => {
 
     useEffect(() => {
         async function fetchGames() {
-            const response = await fetch("http://localhost:3031/api/games", {
+            const response = await fetch("http://localhost:3032/api/games", {
                 method: "GET",
                 headers: {
                     Authorization: localStorage.getItem("token"),
@@ -33,9 +33,11 @@ const AddGameForm = ({ onAdd }) => {
             gameId: formData.gameId,
             platform: formData.platform,
             price: formData.boughtPrice,
-        }
+        };
 
-        const res = await fetch("http://localhost:3031/api/users", {
+        console.log("Submitting payload:", payload);
+
+        const res = await fetch("http://localhost:3032/api/users", {
             body: JSON.stringify(payload),
             method: "PATCH",
             headers: {
@@ -45,10 +47,20 @@ const AddGameForm = ({ onAdd }) => {
         });
 
         if (res.status !== 200) {
-            return alert("ERRO");
+            const errorData = await res.json();
+            alert(errorData.message || "ERRO");
+            return;
         }
 
-        return;
+        // Success: reset form, notify user, and call onAdd
+        setFormData({
+            gameId: "",
+            platform: "",
+            boughtPrice: "",
+        });
+        setPlatforms([]);
+        alert("Game added to your library!");
+        if (onAdd) onAdd();
     };
 
     const handleGameChange = (e) => {

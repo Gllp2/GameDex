@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .stat-group {
   display: flex;
@@ -41,6 +41,34 @@
   border-radius: 23px;
   
 
+}
+
+body,
+.profile-bg,
+.profile-card,
+.stat,
+.profile-img,
+.collection-history,
+.collection-title,
+.history-content,
+.history-info,
+.first-game-text,
+.bought-date,
+.price-comparison,
+.price-comparison .price,
+.divider,
+.history-image,
+.game-placeholder,
+.game-title,
+.platform-badges,
+.platform-badge,
+.profile-extra-section,
+.number,
+.currency,
+.label {
+  font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .collection-history {

@@ -20,7 +20,7 @@ export default function CollectionHistory({ games }) {
     // Fetch the game details to get the title
     async function fetchGameTitle() {
       if (earliest && earliest.game_id) {
-        const res = await fetch(`http://localhost:3031/api/games/${earliest.game_id}`, {
+        const res = await fetch(`http://localhost:3032/api/games/${earliest.game_id}`, {
           headers: { Authorization: localStorage.getItem('token') }
         });
         if (res.ok) {
@@ -56,7 +56,16 @@ export default function CollectionHistory({ games }) {
           </div>
         </div>
         <div className="history-image">
-          <div className="game-placeholder" />
+          <div
+  className="game-placeholder"
+  style={{
+    backgroundImage: `url(${game.image})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    borderRadius: '12px',
+    border: '2px solid white'
+  }}
+/>
           <div className="game-title">
             <strong>{game.name}</strong>
             <FaPlaystation style={{ marginLeft: '8px' }} />

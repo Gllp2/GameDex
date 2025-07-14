@@ -1,86 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .game-details-container {
-  max-width: 1000px;
-  margin: 40px auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0 20px;
-  color: #3b1c5e; 
+  max-width: 900px;
+  margin: 48px auto;
+  font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 32px 32px 32px 32px;
+  color: #6f00ff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #453767;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-
+  background-color: #453767 ;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60, 30, 94, 0.18);
 }
 
-.game-details-back-button {
-  background-color: #3b1c5e;
-  color: rgb(146, 105, 222);
-  border: none;
-  width: 25px;
-  height: 25px;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 18px;
-  margin-bottom: 20px;
-  transition: background-color 0.5s ease;
+.game-details-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 32px 0 12px 0;
+  color: #ede6f6;
+  letter-spacing: 1px;
+  text-align: center;
+  transition: color 0.5s;
 }
 
-.game-details-back-button:hover {
-  background-color: #592a8d;
+.game-details-title:hover {
+  color: #dcb0f9;
 }
 
 .game-details-content {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 36px;
   align-items: flex-start;
-  background-color: #967cb4;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.game-details-image-container {
-  flex: 1; 
-  max-width: 50%;
-}
-
-.game-details-image {
+  background: rgba(150, 124, 180, 0.18);
+  padding: 28px 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(60, 30, 94, 0.08);
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
 }
+
+
 
 .game-details-text {
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.game-details-title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 16px; 
-  transition: 0.5s ease-in-out;
+.game-details-info,
+.game-details-year,
+.game-details-genre,
+.game-details-platform,
+.game-details-price,
+.game-details-bought {
+  font-size: 1.1rem;
   color: #ede6f6;
-}
-
-.game-details-title:hover{
-  color: #dcb0f9;
-  transition: 0.9s ease-in-out;
-}
-
-
-
-.game-details-info {
-  font-size: 16px;
-  color: #444;
   margin-bottom: 8px;
+  background: rgba(60, 30, 94, 0.08);
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(60, 30, 94, 0.04);
 }
 
-.game-details-description {
-  margin-top: 20px;
-  font-size: 17px;
-  color: #333;
-  line-height: 1.7;
+.game-details-bought {
+  font-weight: 600;
+  color: #dcb0f9;
+}
+
+.game-details-bought[style*="red"] {
+  color: #ff6b6b !important;
+}
+
+.back-to-library-button {
+  background-color: #3b1c5e;
+  color: #ede6f6;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 18px;
+  box-shadow: 0 2px 8px rgba(60, 30, 94, 0.08);
+  transition: background 0.3s, color 0.3s;
+}
+
+.back-to-library-button:hover {
+  background-color: #5a3682;
+  color: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .game-details-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 8px;
+  }
+  .game-details-image {
+    width: 160px;
+    height: 160px;
+  }
 }

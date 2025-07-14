@@ -23,7 +23,7 @@ function SignUpPage() {
     e.preventDefault();
     setError('');
     setSuccess('');
-    const res = await fetch('http://localhost:3031/api/signup', {
+    const res = await fetch('http://localhost:3032/api/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
@@ -33,7 +33,7 @@ function SignUpPage() {
       setError(data.message || 'Sign up failed');
     } else {
       setSuccess(data.message);
-      const loginRes = await fetch('http://localhost:3031/api/auth/login/', {
+      const loginRes = await fetch('http://localhost:3032/api/auth/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ username: form.username, password: form.password })
