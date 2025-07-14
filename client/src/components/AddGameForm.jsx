@@ -8,7 +8,7 @@ const AddGameForm = ({ onAdd }) => {
 
     useEffect(() => {
         async function fetchGames() {
-            const response = await fetch("http://localhost:3031/api/games", {
+            const response = await fetch("http://localhost:3032/api/games", {
                 method: "GET",
                 headers: {
                     Authorization: localStorage.getItem("token"),
@@ -35,7 +35,7 @@ const AddGameForm = ({ onAdd }) => {
             price: formData.boughtPrice,
         }
 
-        const res = await fetch("http://localhost:3031/api/users", {
+        const res = await fetch("http://localhost:3032/api/users", {
             body: JSON.stringify(payload),
             method: "PATCH",
             headers: {

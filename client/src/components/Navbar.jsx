@@ -7,7 +7,7 @@ import { NavLink  } from "react-router-dom";
 const NavBar = () => {
 
     const handleLogout = async () => {
-        const res = await fetch("http://localhost:3031/api/logout/", {
+        const res = await fetch("http://localhost:3032/api/logout/", {
             method: "DELETE",
             headers: {
                 "Authorization": localStorage.getItem("token")

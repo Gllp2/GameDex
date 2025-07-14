@@ -6,7 +6,11 @@ function SignUp({ form, onChange, onSubmit, error, success }){
     return(
         <div className="signUp-Form">
             <img src="/logos/gd.png" alt="" className='dex-logo' />
-            <h3>All your games <br />In one place</h3>
+            <div className='slogan'>
+                <label>All your games</label>
+                <br></br>
+                <label>In one place</label>
+            </div>
             <form onSubmit={onSubmit}>
                 <label className='label-title'>Username</label><br />
                 <input
@@ -56,7 +60,7 @@ function SignUp({ form, onChange, onSubmit, error, success }){
             
             <div>
                 
-                <p className='logIn'>Have an account already? <br /><a href="/" className='logIn-link'>Log In!</a></p>
+                <p className='logIn'>Have an account already? <br /><a href="/login" className='logIn-link'>Log In!</a></p>
             </div>
         </div>
 

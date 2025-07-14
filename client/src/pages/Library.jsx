@@ -19,14 +19,14 @@ const Library = () => {
     useEffect(() => {
         async function fetchUserAndGames() {
             // Fetch user (with games array)
-            const userRes = await fetch("http://localhost:3031/api/users/me", {
+            const userRes = await fetch("http://localhost:3032/api/users/me", {
                 headers: { Authorization: localStorage.getItem("token") }
             });
             const userData = await userRes.json();
             setUserGames(userData.games || []);
 
             // Fetch all games for lookup
-            const gamesRes = await fetch("http://localhost:3031/api/games", {
+            const gamesRes = await fetch("http://localhost:3032/api/games", {
                 headers: { Authorization: localStorage.getItem("token") }
             });
             const gamesData = await gamesRes.json();

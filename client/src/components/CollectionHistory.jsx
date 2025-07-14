@@ -20,7 +20,7 @@ export default function CollectionHistory({ games }) {
     // Fetch the game details to get the title
     async function fetchGameTitle() {
       if (earliest && earliest.game_id) {
-        const res = await fetch(`http://localhost:3031/api/games/${earliest.game_id}`, {
+        const res = await fetch(`http://localhost:3032/api/games/${earliest.game_id}`, {
           headers: { Authorization: localStorage.getItem('token') }
         });
         if (res.ok) {

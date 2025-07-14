@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/LandingPage.css";
+import "../styles/logIn.css"
+import "../styles/signUp.css"
 
 const GradientBackground = () => {
   const interactiveRef1 = useRef(null);

@@ -18,14 +18,14 @@ const GameDetailsPage = () => {
             try {
                 const token = localStorage.getItem('token');
                 // Fetch game details
-                const gameRes = await fetch(`http://localhost:3031/api/games/${id}`, {
+                const gameRes = await fetch(`http://localhost:3032/api/games/${id}`, {
                     headers: { Authorization: token }
                 });
                 const gameData = await gameRes.json();
                 console.log('Game Data:', gameData);
                 setGame(gameData);
                 // Fetch user games
-                const userRes = await fetch('http://localhost:3031/api/users/me', {
+                const userRes = await fetch('http://localhost:3032/api/users/me', {
                     headers: { Authorization: token }
                 });
                 const userData = await userRes.json();

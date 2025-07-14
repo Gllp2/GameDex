@@ -9,8 +9,16 @@ function LandingPage() {
             <GradientBackground />
             <div className="landing-container">
                 <div className="landing-div">
-                    <img src="/logos/gd.png" alt="GameDex Logo" className="landing-logo" />
-                    <p>All your games in one place.</p>
+                    <img
+                        src="/logos/gd.png"
+                        alt="GameDex Logo"
+                        className="landing-logo"
+                    />
+                    <div className="slogan-landing">
+                        <label>All your games</label>
+                        <br></br>
+                        <label>In one place</label>
+                    </div>
                     <div className="landing-actions">
                         <Link to="/login" className="landing-btn">
                             Log In
@@ -26,6 +34,3 @@ function LandingPage() {
 }
 
 export default LandingPage;
-
-
-//3032 backend // <- mudar todas os FETCH para esta porta

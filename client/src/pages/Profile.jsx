@@ -13,7 +13,7 @@ function ProfilePage() {
   useEffect(() => {
     async function fetchUser() {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:3031/api/users/me', {
+      const res = await fetch('http://localhost:3032/api/users/me', {
         headers: { Authorization: token }
       });
       if (res.ok) {

@@ -8,7 +8,7 @@ import ContactsPage from './pages/Contacts';
 import LibraryPage from './pages/Library';
 import GameDetailsPage from './pages/GameDetails'; 
 import AddGamePage from './pages/AddGame';
-import LandingPage from './pages /LandingPage';
+import LandingPage from './pages/LandingPage';
 
 
 function App() {
