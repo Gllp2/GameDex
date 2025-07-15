@@ -1,11 +1,56 @@
 .game-card{  
     background-color: #201032;  
-    border-radius: 5px;
+    border-radius: 10px;
+    position: relative;
     overflow: hidden;
-    width: 570px;
-    height: 860px;
+    width: 27rem;
+    height: 35rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease; 
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+.game-card-blur {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+}
+
+.game-card-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.3s;
+    background: rgba(32, 16, 50, 0.82);
+}
+
+.game-card:hover .game-card-blur,
+.game-card:hover .game-card-overlay {
+    opacity: 1;
+}
+
+.gaming-card-title,
+.gaming-card-platform {
+    color: #fff;
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+    text-shadow: 0 4px 16px #ffffff, 0 1px 0 #ffffff;
+    letter-spacing: 1px;
+    line-height: 1.2;
 }
 
 .game-card:hover{
@@ -30,12 +75,12 @@
 .gaming-card-title{
     font-size: 20px;
     font-weight: bold;
-    color: #3b1c5e;
+    color: #ffffff;
     margin: 0;
 }
 .gaming-card-platform{
     font-size: 16px;
-    color: #3b1c5e;
+    color: #ffffff;
     margin: 0;
 }
 .game-card-info{

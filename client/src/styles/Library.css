@@ -4,7 +4,7 @@
 
 .library-container{
     padding: 40px 20px;
-    background-color: #3b1c5e;  
+    background-color: transparent;  
     font-family: "Istok Web", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -14,10 +14,14 @@
 
 
 .library-title{
-    text-align:center;
-    margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 5rem;
     font-size: 32px;
-    color: #e7dbfe
+    color: #e7dbfe;
+    text-shadow:
+        0 4px 16px #590fe4,
+        0 1px 0 #e253cf,
+        0 0 10px #33c97e;
 }
 
 .library-grid{
@@ -31,47 +35,15 @@
 
 .library-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   justify-items: center;
   align-items: stretch;
-  margin-top: 32px;
   padding-bottom: 32px;
 }
 
-.game-card {
-  background-color: #453767;
-  border-radius: 16px;
-  box-shadow: 5px 4px 16px rgba(60, 30, 94, 0.12);
-  padding: 24px 18px;
-  width: 100%;
-  max-width: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
 
-.game-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(60, 30, 94, 0.18);
-}
 
-.gaming-card-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #ede6f6;
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-.gaming-card-platform {
-  font-size: 1rem;
-  color: #dcb0f9;
-  margin-bottom: 4px;
-  text-align: center;
-}
 
 @media (max-width: 700px) {
   .library-grid {

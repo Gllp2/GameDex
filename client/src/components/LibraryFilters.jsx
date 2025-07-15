@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/LibraryFilters.css";
 
 const LibraryFilters = ({ filters, onChange }) => {
@@ -6,18 +6,16 @@ const LibraryFilters = ({ filters, onChange }) => {
   const [platformOpen, setPlatformOpen] = useState(false);
   const dropdownRef = useRef();
 
-  // Helper to determine if all platforms are selected
   const allSelected = Object.values(platforms).every(Boolean);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClick(e) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setPlatformOpen(false);
       }
     }
-    if (platformOpen) document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    if (platformOpen) document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, [platformOpen]);
 
   const handleOrderChange = (e) => {
@@ -27,9 +25,8 @@ const LibraryFilters = ({ filters, onChange }) => {
   const handlePlatformChange = (e) => {
     const { name, checked } = e.target;
     if (name === "all") {
-      // Set all platforms to checked/unchecked
       const updated = {};
-      Object.keys(platforms).forEach(p => updated[p] = checked);
+      Object.keys(platforms).forEach((p) => (updated[p] = checked));
       onChange({ ...filters, platforms: updated });
     } else {
       onChange({
@@ -48,7 +45,6 @@ const LibraryFilters = ({ filters, onChange }) => {
 
   return (
     <div className="library-filters">
-      {/* Ordem Dropdown */}
       <div className="dropdown">
         <label>Order</label>
         <select value={order} onChange={handleOrderChange}>
@@ -61,7 +57,6 @@ const LibraryFilters = ({ filters, onChange }) => {
         </select>
       </div>
 
-      {/* Plataforma Dropdown */}
       <div className="dropdown" ref={dropdownRef}>
         <label>Plataforma</label>
         <button
@@ -72,8 +67,10 @@ const LibraryFilters = ({ filters, onChange }) => {
         >
           {allSelected
             ? "Todas"
-            : Object.keys(platforms).filter(p => platforms[p]).join(', ') || "Selecionar..."}
-          <span style={{marginLeft: 8}}>{platformOpen ? "▲" : "▼"}</span>
+            : Object.keys(platforms)
+                .filter((p) => platforms[p])
+                .join(", ") || "Selecionar..."}
+          <span style={{ marginLeft: 8 }}>{platformOpen ? "▲" : "▼"}</span>
         </button>
         {platformOpen && (
           <div className="platform-dropdown-menu">
@@ -101,12 +98,9 @@ const LibraryFilters = ({ filters, onChange }) => {
         )}
       </div>
 
-      {/* Preço Dropdown */}
       <div className="dropdown">
         <label>Price</label>
-        <select value={price
-        
-        } onChange={handlePriceChange}>
+        <select value={price} onChange={handlePriceChange}>
           <option value="<10€">&lt;10€</option>
           <option value="all">All prices</option>
           <option value="10-30€">10-30€</option>

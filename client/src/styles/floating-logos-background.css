@@ -1,11 +1,11 @@
 .floating-logos-bg {
-  position: fixed; /* or absolute if you want it inside a parent */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh; /* covers the viewport */
-  pointer-events: none; /* so it doesn't block clicks */
-  z-index: -1; /* or a value that puts it behind your content */
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
   overflow: hidden;
 }
 
@@ -30,7 +30,6 @@
   }
 }
 
-/* Optional: Positioning specific logos randomly */
 .floating-logo.epic {
   top: 10%;
   left: 5%;
@@ -52,7 +51,6 @@
   left: 40%;
 }
 
-/* Desktop styles (if you want to tweak for desktop, add here) */
 @media (min-width: 441px) {
   .floating-logo {
     opacity: 0.09;

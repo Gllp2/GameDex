@@ -17,11 +17,10 @@ const GameCard = ({ title, platform, _id, cover }) => {
                 backgroundPosition: "center"
             }}
         >
-            <div className="game-card-content">
-                <div  style={{backgroundColor: "white", width: "100%", height: "100%", opacity: 0.8, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "2px", borderRadius: "10px"}}>
-                    <h2 className="gaming-card-title">{title}</h2>
-                    <h2 className='gaming-card-platform'>{platform}</h2>
-                </div>
+            <div className="game-card-blur" />
+            <div className="game-card-overlay">
+                <h2 className="gaming-card-title">{title}</h2>
+                <h2 className='gaming-card-platform'>{platform}</h2>
             </div>
         </div>
     );

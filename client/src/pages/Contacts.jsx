@@ -27,7 +27,7 @@ const Contactos = () => {
 
                 <hr></hr>
 
-                <h2>Contacts Us!</h2>
+                <h2>Contact Us!</h2>
                 <br></br>
                 <form className="contact-form">
                     <label>Name:</label>
